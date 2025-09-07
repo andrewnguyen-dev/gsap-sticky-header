@@ -1,4 +1,4 @@
-client;
+"use client";
 
 import { useRef } from "react";
 import { gsap } from "gsap";
@@ -12,17 +12,37 @@ const SnapSection = () => {
   const section1Ref = useRef<HTMLDivElement | null>(null);
   const section2Ref = useRef<HTMLDivElement | null>(null);
 
-  useGSAP(() => {
-    
-  }, { scope: section1Ref });
+  gsap.defaults({ ease: "none", duration: 2 });
+
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: "#section-1",
+        start: "top top",
+        // scrub: true,
+        pin: true,
+        pinSpacing: false,
+        markers: true,
+      });
+      ScrollTrigger.create({
+        trigger: "#section-2",
+        start: "top top",
+        // scrub: true,
+        pin: true,
+        pinSpacing: false,
+        markers: true,
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div ref={containerRef}>
-      <div ref={section1Ref} className="h-screen flex items-center justify-center bg-zinc-300">
+    <div id="container" ref={containerRef}>
+      <div ref={section1Ref} id="section-1" className="h-screen flex items-center justify-center bg-blue-300">
         <h2 className="text-5xl">SnapSection</h2>
       </div>
-      <div ref={section2Ref} className="h-screen flex items-center justify-center bg-zinc-300">
-        <p className="text-5xl">This is the content of the SnapSection.</p>
+      <div ref={section2Ref} id="section-2" className="h-screen flex items-center justify-center bg-zinc-300">
+        <p className="text-3xl">This is the content of the SnapSection.</p>
       </div>
     </div>
   );
