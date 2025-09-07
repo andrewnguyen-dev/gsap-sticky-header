@@ -23,16 +23,16 @@ const SnapSection = () => {
         scrub: 1,
         pin: true,
         pinSpacing: false,
-        markers: true,
+        // markers: true,
       });
       ScrollTrigger.create({
         trigger: "#section-2",
         start: "top top",
-        end: "bottom top",
+        end: "bottom bottom",
         scrub: 1,
         pin: true,
         pinSpacing: false,
-        // markers: true,
+        markers: true,
       });
     },
     { scope: containerRef }
@@ -46,6 +46,9 @@ const SnapSection = () => {
       <div ref={section2Ref} id="section-2" className="h-screen flex items-center justify-center bg-zinc-300">
         <p className="text-3xl">This is the content of the SnapSection.</p>
       </div>
+      <footer className="h-80 bg-gray-500">
+        abc
+      </footer>
     </div>
   );
 };
