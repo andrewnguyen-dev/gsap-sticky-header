@@ -19,7 +19,8 @@ const SnapSection = () => {
       ScrollTrigger.create({
         trigger: "#section-1",
         start: "top top",
-        // scrub: true,
+        // end is implicitly added as +=100vh
+        scrub: 1,
         pin: true,
         pinSpacing: false,
         markers: true,
@@ -27,10 +28,11 @@ const SnapSection = () => {
       ScrollTrigger.create({
         trigger: "#section-2",
         start: "top top",
-        // scrub: true,
+        end: "bottom top",
+        scrub: 1,
         pin: true,
         pinSpacing: false,
-        markers: true,
+        // markers: true,
       });
     },
     { scope: containerRef }
